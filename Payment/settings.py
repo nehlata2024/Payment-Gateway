@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'app'
 ]
 
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51PIqyzSH6jh0eytBiBm0y6eqBucjVkCMEsKiFTyWAQWeo3dKzlJOKkUZZBY85HOP6dAdCZQB7tCIABH7zQNMavMx00O9Xl6lPO'
+STRIPE_SECRET_KEY = "sk_test_51PIqyzSH6jh0eytBSMUQB4obkNI10kV5UmhbaYgRQDM4CIi72fHjA7exu3dkDmU4JpIH7s15eVtV4VuOK6csWvUj00tbDz3MQj"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

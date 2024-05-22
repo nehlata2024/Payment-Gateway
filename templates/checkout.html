@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="create-payment-link">Create Payment Link</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#create-payment-link").click(function(){
+                $.ajax({
+                    url: "{% url 'create_payment_link' %}",
+                    type: "POST",
+                    data: {
+                        'product_id': 'your_product_id'  // Replace with your product ID
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.payment_link) {
+                            // Redirect user to payment link
+                            window.location.href = response.payment_link;
+                        } else {
+                            console.error("Error:", response.error);
+                            // Handle error
+                        }
+                    },
+                })
+            })
+        })
+        </script>
+</body>
+</html>

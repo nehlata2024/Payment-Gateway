@@ -1,0 +1,49 @@
+<!-- subscribe.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+</head>
+<body>
+    <form  id="productForm" action ="/create-payment-link/" method="post">
+        <input type="hidden" id="productIdInput" name="product_id">
+
+        {% csrf_token %}
+    
+        <h1>Products List</h1>
+        <ul>
+        {% for product in products%}
+        <li>
+            <h2>{{ product.name }}</h2>
+            <p>Description: {{ product.description }}</p>
+            <button class="create-payment-link" data-product-id="{{ product.id }}">Subscribe</button>
+    
+            </li>   
+         {% endfor %}
+    </ul>
+     
+    </form>
+    <script src="https://js.stripe.com/v3/"></script>
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <script>
+            $(".create-payment-link").click(function() {
+                var productId = $(this).data("product-id");
+
+                var formData = new FormData();
+                formData.append('product_id', productId);
+                console.log(formData.get('product_id'));
+
+            $("#productIdInput").val(productId);
+            $("#productForm").submit();
+
+
+            });
+    
+    </script>
+</body>
+</html>
